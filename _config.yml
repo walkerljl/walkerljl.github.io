@@ -1,0 +1,37 @@
+# Site settings
+name: Walkerljl's Blog
+email: walkerljls@163.com
+author: Walkerljl
+url: http://www.walkerljl.org
+resume_site: http://www.walkerljl.org/resume.io/
+github: https://github.com/walkerljl/
+baseurl: ""
+description: walker.
+meta_description: walker.
+motto: walker.
+banner: walker.
+
+#permalink: /:categories/:year/:month/:day/:title/
+permalink: /:year/:month/:day/:title/
+paginate: 10
+
+exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
+
+github_username: walkerljl
+#highlighter: rouge
+
+# Build settings
+markdown: kramdown
+
+FB:
+  comments :
+    provider : duoshuo
+    duoshuo:
+        short_name : walkerljl
+    disqus :
+        short_name : walkerljl
+    # facebook :
+    #   appid : 123
+    #   num_posts: 5
+    #   width: 580
+    #   colorscheme: light
