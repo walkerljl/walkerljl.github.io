@@ -1,10 +1,9 @@
 # Site settings
 name: Walkerljl's Blog
 email: walkerljls@163.com
-author: Walkerljl
-url: http://www.walkerljl.org
-resume_site: http://www.walkerljl.org/resume.io/
-github: https://github.com/walkerljl/
+author: walkerljl
+url: //www.walkerljl.org
+github: //github.com/walkerljl/
 baseurl: ""
 description: walker.
 meta_description: walker.
