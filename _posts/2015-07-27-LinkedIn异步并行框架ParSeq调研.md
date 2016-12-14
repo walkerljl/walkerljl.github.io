@@ -6,12 +6,13 @@ categories:
 tag: 异步并行
 ---
 
-摘要: ParSeq是LinkedIn开源的异步并行框架。具有如下优点：
-    1、异步操作并行化处理。
-    2、顺序执行非阻塞性计算。
-    3、通过任务组合实现代码重用。
-    4、简单的错误传播和恢复机制。
-    5、执行跟踪和可视化。
+
+ParSeq是LinkedIn开源的异步并行框架。具有如下优点：
+1. 异步操作并行化处理。
+2. 顺序执行非阻塞性计算。
+3. 通过任务组合实现代码重用。
+4. 简单的错误传播和恢复机制。
+5. 执行跟踪和可视化。
 
 ### 1、获取ParSeq，目前最新版本是v2.0.3，使用ParSeq的v2.x需要jdk1.8.x以上支持
 
@@ -86,13 +87,13 @@ Task是懒惰的，它只是对能够被引擎执行的计算进行了描述，�
 
 使用ParSeq的跟踪工具我们可以得到如下的图形：
 
-![Alt text](https://cl.ly/0V1X3z1n0l1u/001.png "图形")
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-001.png "Can not load image.")
 
 如果这里需要处理Task产生的结果，使用andThen方法就可以了：
 
     Task<String> printContentType = contentType.andThen("print", System.out::println);
 
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-002.png "Can not load image.")
 
 上面的例子中，我们使用JAVA8的方法引用，当然我们也可以使用Lambda 表达式来完成：
 
@@ -101,7 +102,7 @@ Task是懒惰的，它只是对能够被引擎执行的计算进行了描述，�
 类似的，如果我们需要处理潜在的错误，我们可以使用`onFailure()`方法:
 
     Task<String> logFailure = contentType.onFailure("print stack trace", e -> e.printStackTrace());
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-003.png "Can not load image.")
 
 在处理更大潜在错误的时候使用更简单的`toTry()`方法更加有用，将`Task<T>`转换成`Task<Try<T>>`。
 
@@ -118,7 +119,7 @@ Task是懒惰的，它只是对能够被引擎执行的计算进行了描述，�
 
     });
 
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-004.png "Can not load image.")
 最后，`transform()`方法将组合`toTry()`和`map()`;
 
     Task(Response) get = HttpClient.get("http://www.google.com").task();
@@ -134,7 +135,7 @@ Task是懒惰的，它只是对能够被引擎执行的计算进行了描述，�
     }
 
     });
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-005.png "Can not load image.")
 
 在上面的列子中，如果HTTP GET请求失败，"contents" Task总是成功完成并返回`Optional` 或`Optional.empty()`包装的谷歌首页内容。
 
@@ -161,7 +162,7 @@ Task是懒惰的，它只是对能够被引擎执行的计算进行了描述，�
 `Task.par()`创建一个新的Task异步运行"`googleContentType`"和"`bingContentType`"。使用`map()`方法将执行的结果转换成一个字符串。
 
 上面的执行过程可以用下图来表示：
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-006.png "Can not load image.")
 运行结果如下：
 
     Google： text/html;charset=ISO-8859-1
@@ -185,7 +186,7 @@ ParSeq提供了andThen方法来实现执行完成一个Task之后再执行另外
 
     Task<ShipmentInfo> shipAfterPayment = processPayment.andThen("shipProductAfterPayment", shipProduct);
 
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-007.png "Can not load image.")
 
 在上面的例子中只有当“processPayment”Task运行成功完成之后才会运行“shipProduct”Task。请注意，“shipProduct”Task并不依赖“processPayment”Task的执行结果。
 
@@ -241,6 +242,7 @@ ParSeq提供了andThen方法来实现执行完成一个Task之后再执行另外
     http://www.google.com/images/google_favcion_128.png：length = 3243
 
 Task跟踪图：
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-008.png "Can not load image.")
 
 最后，让我们结合一下并行、串行组合。我们将使用并行任务获取google.com和bing.com中第一张图片的信息：
 
@@ -251,7 +253,7 @@ Task跟踪图：
     Task<String> infos = Task.par(googleInfo, bingInfo).map("concatenate", (google, bing) -> "Google:" + google + "\n" + "Bing:" + bing + "\n");
 
 执行上面的Task会出现下面的跟踪图：
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-009.png "Can not load image.")
 
 
 运行结果：
@@ -272,7 +274,7 @@ ParSeq中的一个重要原则错误总是传播给他们依赖的Task。通常�
     Task<Integer> length = failing.map("length", s-> s.length());
 
 上面关于Lenght的列子会因为`java.lang.StringIndexOutOfBoundsException`失败，并且从failling Task中传播出来。
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-010.png "Can not load image.")
 
 
 通常降级行为是一个更好的选择相对简单的错误传播。如果存在一个合理错误回滚值，可以使用recover()从错误中恢复。
@@ -285,12 +287,12 @@ ParSeq中的一个重要原则错误总是传播给他们依赖的Task。通常�
 
 这次Length Task将恢复默认值0从`java.lang.StringIndexOutOfBoundsException`中恢复。请注意，错误回滚机制允许将导致错误的异常作为一个参数。
 
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-011.png "Can not load image.")
 
 有时候我们没有回退值可以使用，但是我们可以使用另外一个Task继续完成计算。在这种情况下，我们可以使用`recoverWith()`方法。`recover()`和`recoverWith()`方法的区别是后者返回一个包含可退步值将被执行的Task实例。下面的例子将演示，当我们从缓存中获取用户失败之后从数据库中获取用户信息。
 
     Task<Person> user = fetchFromCache(id).recoverWith(e ->fetchFromDB(id));
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-012.png "Can not load image.")
 
 
 ### 8、使用超时
@@ -300,7 +302,7 @@ ParSeq中的一个重要原则错误总是传播给他们依赖的Task。通常�
     final Task<Response> google = HttpClient.get("http://google.com").task().withTimeout(10, TimeUnit.MILLISECONDS);
 
 在上面的列子中，如果抓取google.com的内容超过10ms,Task将会因为`TimeoutException`失败。
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-013.png "Can not load image.")
 
 
 ### 9、取消
@@ -314,7 +316,7 @@ Task实现了当Task被取消时能够给侦测到，并且做出相应的反应
 通常一个Task的目的是通过计算得到一个值。你可以将一个Task作为一个异步功能。一旦值被计算出来，就不必继续运行这个Task。因此任务TaskParSeq只运行一次，引擎能够识别已经完成或已经启动的Task并且不再执行他们。
 
 在一个Task执行完成或开始运行之前已经获取结果值这是可能的。其中一种情况是当我们为一个Task设置一个超时时间。指定超时时间的Task可能因为timeoutTime失败，但是原始的Task可能仍然在继续执行。在这种情况下，ParSeq将通过 `EarlyFinishException`来自动取消原始的Task。
-
+![Alt text](http://static.walkerljl.org/image/blog/2015/parseq/parseq-014.png "Can not load image.")
 
 
 10ms之后，计算结果的Task将会失败，如红色部分；原始的Task会通过EarlyFinishException自动取消，黄色部分。
@@ -354,20 +356,3 @@ ParSeq提供了一个test模块包含一个`BaseEngineTest`可以被用作ParSeq
 `Callable`：将被执行的代码
 
 `Executor`：callable将被调用的实例
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
