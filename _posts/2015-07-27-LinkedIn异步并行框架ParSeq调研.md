@@ -1,11 +1,11 @@
 ---
-layout: post
-title: LinkedIn异步并行框架ParSeq调研
-date: 2015-07-27 20:01:00 +0800
-categories:
-tag: 异步并行
+layout : post
+title : LinkedIn异步并行框架ParSeq调研
+date : 2015-07-27
+author : walkerljl
+categories : blog
+tag : 异步并行
 ---
-
 
 ParSeq是LinkedIn开源的异步并行框架。具有如下优点：
 1. 异步操作并行化处理。

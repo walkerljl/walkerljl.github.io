@@ -10,8 +10,8 @@ meta_description: walker.
 motto: walker.
 banner: walker.
 
-#permalink: /:categories/:year/:month/:day/:title/
-permalink: /:year/:month/:day/:title/
+permalink: /:categories/:year/:month/:day/:title.html
+#permalink: /:year/:month/:day/:title
 paginate: 10
 
 exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
