@@ -1,5 +1,5 @@
 # Site settings
-name: Walkerljl's Blog
+name: Walkerljl的个人博客
 email: walkerljls@163.com
 author: walkerljl
 url: //www.walkerljl.org
@@ -10,7 +10,7 @@ meta_description: walker.
 motto: walker.
 banner: walker.
 
-permalink: /:categories/:year/:month/:day/:title.html
+permalink: /:categories/:year-:month-:day/:title.html
 #permalink: /:year/:month/:day/:title
 paginate: 10
 
