@@ -1,18 +1,25 @@
+---
+layout : post
+title : Java并发库-AtomicReferenceABA
+date : 2014-01-01
+author : walkerljl
+categories : blog
+tag : Java并发库
+---    
     package org.walkerljl.practice.concurrent;
     
     import java.util.Random;
     import java.util.concurrent.CountDownLatch;
-    import java.util.concurrent.atomic.AtomicStampedReference;
+    import java.util.concurrent.atomic.AtomicReference;
     
     /**
-     * 同一个业务重复提交两次,对于非重复提交类型的并发还是会有问题,
-     * 使用AtomicMarkableReference解决此问题
+     * AtomicReferenceABATest
      *
      * @author lijunlin
      */
-    public class AtomicStampedReferenceTest {
+    public class AtomicReferenceABATest {
     
-        private static final AtomicStampedReference<String> ATOMIC_REFERENCE = new AtomicStampedReference<String>("abc", 0);
+        private static final AtomicReference<String> ATOMIC_REFERENCE = new AtomicReference<String>("abc");
         private static final Random RANDOM_OBJECT = new Random();
     
         public static void main(String[] args) throws InterruptedException {
@@ -23,8 +30,7 @@
                 threads[i] = new Thread() {
                     @Override
                     public void run() {
-                        String oldValue = ATOMIC_REFERENCE.getReference();
-                        int stamp = ATOMIC_REFERENCE.getStamp();
+                        String oldValue = ATOMIC_REFERENCE.get();
                         try {
                             startCountDownLatch.await();
                         } catch (InterruptedException e) {
@@ -35,7 +41,7 @@
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
-                        if (ATOMIC_REFERENCE.compareAndSet(oldValue, oldValue + num, stamp, stamp + 1)) {
+                        if (ATOMIC_REFERENCE.compareAndSet(oldValue, oldValue + num)) {
                             System.out.println("线程:" + num + "，进行了对象修改");
                         }
                     }
@@ -52,11 +58,11 @@
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    int stamp = ATOMIC_REFERENCE.getStamp();
-                    while (!ATOMIC_REFERENCE.compareAndSet(ATOMIC_REFERENCE.getReference(), "abc", stamp, stamp + 1)) {
-                        stamp = ATOMIC_REFERENCE.getStamp();
+    
+                    while (!ATOMIC_REFERENCE.compareAndSet(ATOMIC_REFERENCE.get(), "abc")) {
                     }
                     ;
+    
                     System.out.println("已经修改为原始值");
                 }
             }.start();

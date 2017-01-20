@@ -1,3 +1,11 @@
+---
+layout : post
+title : Java并发库-CompletionService
+date : 2014-01-01
+author : walkerljl
+categories : blog
+tag : Java并发库
+---    
     package org.walkerljl.practice.asyncparallel;
     
     import org.walkerljl.commons.datetime.DateUtils;

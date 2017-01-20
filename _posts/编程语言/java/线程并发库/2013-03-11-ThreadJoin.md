@@ -1,4 +1,11 @@
-
+---
+layout : post
+title : Java并发库-Join
+date : 2014-01-01
+author : walkerljl
+categories : blog
+tag : Java并发库
+---
     package org.walkerljl.practice.concurrent;
     
     import java.util.Random;
