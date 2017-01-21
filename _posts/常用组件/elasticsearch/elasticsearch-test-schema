@@ -1,0 +1,19 @@
+curl -XPOST 'http://localhost:9200/identity/user_info/1?pretty' -d'{
+	"id" : 1,
+	"user_id" : "admin",
+	"user_name" : "admin",
+	"gender" : 1,
+	"age" : 18,
+	"interests" : ["写代码","听音乐"],
+	"about" : "我喜欢攀登山峰。",
+	"remark" : "",
+	"status" : 1,
+	"creator" : "admin",
+	"created" : 1,
+	"modifier" : "admin",
+	"modified" : 1
+}'
+
+
+curl -XGET 'http://localhost:9200/identity/user/1?pretty'
+
