@@ -5,10 +5,10 @@ author: walkerljl
 url: //www.walkerljl.org
 github: //github.com/walkerljl/
 baseurl: ""
-description: walker.
+description: walkerljl
 meta_description: walker.
-motto: walker.
-banner: walker.
+motto: walkerljl
+banner: walkerljl
 
 permalink: /:categories/:year-:month-:day/:title.html
 #permalink: /:year/:month/:day/:title

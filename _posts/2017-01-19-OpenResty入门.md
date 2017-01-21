@@ -6,19 +6,18 @@ author : walkerljl
 categories : blog
 tag : OpenResty
 ---
-
-#一、入门
+# 一、入门
 OpenResty是一个基于Nginx与Lua的高性能Web平台，其内集成了大量好的Lua库，第三方模块以及大多数的依赖项。用于方便地搭建能够处理超高并发、扩展性极高的动态Web应用、Web服务和动态网关。
 
 OpenResty通过汇聚各种设计精良的Nginx模块（主要由OpenResty团队自主开发），从而将Nginx有效的变成一个强大的通用的Web应用模块。通过OpenResty，Web开发人员和系统工程师可以使用Lua脚本语言调动Nginx支持的各种C以及Lua模块，快速构造出足以胜任10K乃至1000K以上单机并发连接的高性能Web应用系统。
 
-#二、目标
+# 二、目标
 让你的Web服务直接跑在Nginx服务内部，充分利用Nginx的非阻塞I/O模型，不仅仅对HTTP客户端请求，甚至于对远程后端诸如MySQL、PostgreSQL、Membercached以及Redis等都进行一致的高性能响应。
 
-#三、下载
+# 三、下载
  [http://openresty.org/cn/download.html](http://openresty.org/cn/download.html)
 
-#四、安装(Mac)
+# 四、安装(Mac)
 1.安装前的准备
 
 ```
@@ -34,7 +33,7 @@ $ ./configure
 $ make
 $ sudo make install
 ```
-#五、新手上路
+# 五、新手上路
 1.创建相关目录
 
 ```
@@ -78,7 +77,7 @@ nginx -p `pwd`/ -c conf/nginx.conf
 ```
 $ curl http://localhost:8080/
 ```
-#六、基于Redis的动态路由
+# 六、基于Redis的动态路由
 1.编辑conf/nginx.conf
 
 ```
@@ -169,5 +168,5 @@ $ curl --user-agent foo localhost:8080
 $ curl --user-agent bar localhost:8080
 <nginx.org home page goes here>
 ```
-#七、参考资料
+# 七、参考资料
 - [http://openresty.org/cn/](http://openresty.org/cn/)
