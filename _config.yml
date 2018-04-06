@@ -1,36 +1,28 @@
-# Site settings
-name: Walkerljl的个人博客
-email: walkerljls@163.com
-author: walkerljl
-url: //www.walkerljl.org
-github: //github.com/walkerljl/
-baseurl: ""
-description: walkerljl
-meta_description: walker.
-motto: walkerljl
-banner: walkerljl
-
-permalink: /:categories/:year-:month-:day/:title.html
-#permalink: /:year/:month/:day/:title
-paginate: 10
-
-exclude: ['README.md', 'Gemfile.lock', 'Gemfile', 'Rakefile']
-
-github_username: walkerljl
-#highlighter: rouge
-
-# Build settings
 markdown: kramdown
+highlighter: pygments
+permalink: /posts/:title.html
+excerpt_separator: "<!-- more -->"
 
-FB:
-  comments :
-    provider : duoshuo
-    duoshuo:
-        short_name : walkerljl
-    disqus :
-        short_name : walkerljl
-    # facebook :
-    #   appid : 123
-    #   num_posts: 5
-    #   width: 580
-    #   colorscheme: light
+github: walkerljl
+author: "walkerljl"
+email: xingxun#walkerljl.com
+name: "walkerljl个人博客"
+url: http://walkerljl.org
+domain: www.walkerljl.org
+all_categories: [
+["programlanguage", "编程语言","/posts/programlanguage.html"],
+["tool", "工具","/posts/tool.html"],
+["other", "其它","/posts/other.html"],
+["about", "关于","/about.html"]
+]
+
+paginate: 8
+paginate_path: "posts/page:num"
+timezone: America/Los_Angeles
+
+collections:
+  docs:
+    output: true
+
+gems:
+ - jekyll-paginate
