@@ -1,6 +1,6 @@
 markdown: kramdown
 highlighter: pygments
-permalink: /posts/:title.html
+permalink: /blog/:categories/:year-:month-:day/:title.html
 excerpt_separator: "<!-- more -->"
 
 github: walkerljl
@@ -11,7 +11,14 @@ url: http://walkerljl.org
 domain: www.walkerljl.org
 all_categories: [
 ["programlanguage", "编程语言","/posts/programlanguage.html"],
+["designpattern", "设计模式","/posts/designpattern.html"],
+["database", "数据库","/posts/database.html"],
+["security", "安全","/posts/security.html"],
+["frontend", "前端","/posts/frontend.html"],
+["test", "测试","/posts/test.html"],
+["component", "组件","/posts/component.html"],
 ["tool", "工具","/posts/tool.html"],
+["site", "建站","/posts/site.html"],
 ["other", "其它","/posts/other.html"],
 ["about", "关于","/about.html"]
 ]
