@@ -6,20 +6,20 @@ excerpt_separator: "<!-- more -->"
 github: walkerljl
 author: "walkerljl"
 email: xingxun#walkerljl.com
-name: "walkerljl个人博客"
+name: "文档库"
 url: http://walkerljl.org
 domain: www.walkerljl.org
 all_categories: [
-["programlanguage", "编程语言","/posts/programlanguage.html"],
-["designpattern", "设计模式","/posts/designpattern.html"],
-["database", "数据库","/posts/database.html"],
-["security", "安全","/posts/security.html"],
-["frontend", "前端","/posts/frontend.html"],
-["test", "测试","/posts/test.html"],
-["component", "组件","/posts/component.html"],
-["tool", "工具","/posts/tool.html"],
-["site", "建站","/posts/site.html"],
-["other", "其它","/posts/other.html"],
+["programlanguage", "编程语言","/blog/programlanguage.html"],
+["designpattern", "设计模式","/blog/designpattern.html"],
+["database", "数据库","/blog/database.html"],
+["security", "安全","/blog/security.html"],
+["frontend", "前端","/blog/frontend.html"],
+["test", "测试","/blog/test.html"],
+["component", "组件","/blog/component.html"],
+["tool", "工具","/blog/tool.html"],
+["site", "建站","/blog/site.html"],
+["other", "其它","/blog/other.html"],
 ["about", "关于","/about.html"]
 ]
 
