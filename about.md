@@ -3,6 +3,6 @@ layout: default
 title: "About me"
 ---
 
-## ÓÊÏä£ºxingxun@walkerljl.com
-## Î¢ÐÅ£ºwalker_ljl
+## é‚®ç®±ï¼šxingxun@walkerljl.com
+## å¾®ä¿¡ï¼šwalker_ljl
 
